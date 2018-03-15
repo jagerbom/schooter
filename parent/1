@@ -1,0 +1,39 @@
+<?php
+ob_start();
+session_start();
+echo nl2br("\n <h4 align=\"center\">  click here to <a href=\"parent_logout.php\">LogOut</a> </h4>");
+$parent_id = $_SESSION['user_id'];
+if(!$parent_id) {
+	echo ("You are not logged in, please go to login page and provide credentials");
+	return 0;
+}
+
+//******** Connect to MYSQL database ********//
+$mysqli = new mysqli("127.0.0.1", "root", "", "schooter_final");
+if ($mysqli->connect_errno) {
+        echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+} else {
+        if ($DEBUG) {
+                echo nl2br("\n Connection to database successfull !!");
+        }   
+}
+
+$sql = "select * from sch_xaviers_bhopal_student_info where student_parent_id='$parent_id'";
+$result = $mysqli->query($sql);
+$row = $result->fetch_assoc();
+$student_id = $row['student_id'];
+$student_name = $row['student_name'];
+$student_class   = $row['student_class'];    
+$student_section  = $row['student_section'];    
+$student_age   = $row['student_age'];   
+$student_sex   = $row['student_sex']; 
+
+echo nl2br("\n authentication successfull!!! Welcome  $parent_id \n\n\n your child details are 
+                Id: $student_id
+                Name: $student_name
+                Class: $student_class
+                Section: $student_section
+                Age: $student_age
+                Sex: $student_sex");
+echo nl2br("\n<h4 align=\"center\">  Marks info</h4>");
+?>

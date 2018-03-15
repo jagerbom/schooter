@@ -1,0 +1,35 @@
+<html>
+<body bgcolor="#E6E6FA">
+
+<h1> <font color="red">Welcome to Schooter. Drive your child to successfull career </h1>
+<h2><font color="blue">Student attendence page</h2>
+
+<form action="student_attendence.php" method="post">
+Class: <input type="text" name="class"><br>
+Section: <input type="text" name="section"><br>
+StudentID: <input type="text" name="student_id"><br>
+Student Name: <input type="text" name="student_name"><br>
+Month: <select name="month">
+  <option value="january">january</option>
+  <option value="february">february</option>
+  <option value="march">march</option>
+  <option value="april">april</option>
+  <option value="may">may</option>
+  <option value="june">june</option>
+  <option value="july">july</option>
+  <option value="august">august</option>
+  <option value="september">september</option>
+  <option value="october">october</option>
+  <option value="november">november</option>
+  <option value="december">december</option>
+</select>
+Date: <input type="text" name="date">
+Status: <select name="status">
+  <option value="yes">yes</option>
+  <option value="no">no</option>
+</select><br>
+<input type="submit">
+</form>
+
+</body>
+</html>

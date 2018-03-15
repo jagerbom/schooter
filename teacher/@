@@ -1,0 +1,35 @@
+<?php
+ob_start();
+session_start();
+$teacher_id = $_SESSION['teacher_user_id'];
+
+$class_teacher_class;
+$class_teacher_section;
+$class_teacher_subject;
+
+if(!$teacher_id) {
+	echo ("You are not logged in, please go to login page and provide credentials");
+	return 0;
+}
+echo nl2br("\n <h4 align=\"right\">  click here to <a href=\"/~vaibhav/schooter/teacher/teacher_logout.php\">LogOut</a> </h4>");
+
+echo nl2br("\n <h3 align=\"center\"> <font color=\"green\">!!!! We are coming up with something awesome here !!!!</h4>");
+
+
+$mysqli = new mysqli("127.0.0.1", "root", "", "schooter_final");
+if ($mysqli->connect_errno) {
+        echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+} else {
+        echo nl2br("\n Connection to database successfull !!");
+}
+
+function class_teacher_info($mysqli, $teacher_id) {
+	$sql = "select * from sch_xaviers_bhopal_teacher_class_info where teacher_id='$teacher_id' and class_teacher='yes';
+	$result = $mysqli->query($sql);
+	$row = $result->fetch_assoc();
+
+	$class_teacher_class = $row['class'];
+	$class_teacher_section = $row['section'];
+	$class_teacher_subject = $row['subject'];
+
+?>
